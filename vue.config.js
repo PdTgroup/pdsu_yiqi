@@ -72,18 +72,6 @@ module.exports = {
       // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
       title: 'login page',
       chunks: ['chunk-vendors', 'chunk-common', 'login']
-    },
-    management: {
-      // page 的入口
-      entry: './src/pages/management/management.js',
-      // 模板来源
-      template: 'public/management.html',
-      // 在 dist/index.html 的输出
-      filename: 'management.html',
-      // 当使用 title 选项时，
-      // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-      title: 'management.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'management']
     }
   },
   //是否使用包含运行时编译器的 Vue 构建版本

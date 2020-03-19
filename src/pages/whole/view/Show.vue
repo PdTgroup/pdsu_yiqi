@@ -76,8 +76,7 @@ let OuterPerson = () =>
 let InputPie = () => import("../../../components/echarts/pie/InputPie.vue");
 let Weather = () => import("../../../components/echarts/other/Weather.vue");
 let TempLine = () => import("../../../components/echarts/line/TempLine.vue");
-let NumberLine = () =>
-  import("../../../components/echarts/line/NumberLine.vue");
+let NumberLine = () => import("../../../components/echarts/line/NumberLine.vue");
 export default {
   name: "show",
   components: {

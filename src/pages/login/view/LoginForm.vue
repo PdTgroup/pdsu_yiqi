@@ -32,7 +32,7 @@
 <script>
 import * as types from "../../../store/types.js";
 import store from "../../../store/store.js";
-import userList from "../../../json/userList";
+import userList from "../../../json/user/userList";
 export default {
   data() {
     return {
@@ -104,7 +104,7 @@ export default {
         // else{
         //    alert("用户活密码错误")
         // }
-      console.log(this.list[0].model)
+      // console.log(this.list[0].model)
       if(this.list[0].model!==""&&this.list[1].model!==""){
         this.checkInfo(this.list[0].model,this.list[1].model)
       }else {

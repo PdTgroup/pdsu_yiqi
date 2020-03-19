@@ -28,7 +28,7 @@ export default {
       data: null,
       title: null,
       state: null,
-      gradeStatus:null,
+      gradeStatus:0,
       myChart: {},
       clientHeight: "100%",
       allIndexs: [
@@ -41,27 +41,23 @@ export default {
           value: 1
         }
       ],
-      dataSchool: [
-        { value: 5, name: "已录" },
-        { value: 16, name: "未录" }
-      ],
+      dataSchool: "",
       checkedVal: [0]
     };
   },
   created() {
     this.$nextTick(() => {
       this.state = "录入";
-      this.data = this.dataSchool;
       this.title = this.allIndexs[this.checkedVal[0]].label;
-      this.inputPieCharts(this.data);
+      this.initPieCharts(this.getNextData(this.gradeStatus));
       this.myChart.on("click",(params)=>{
-        this.checkGrade(params)
+        this.nextGrade(params)
       })
     });
   },
   methods: {
     // pie 数据渲染
-    inputPieCharts(data) {
+    initPieCharts(data) {
       let opPieFnc = new optionPieFun();
       this.myChart = new optionPublicFun().init("input-pie-container");
       this.myChart.setOption({
@@ -70,24 +66,35 @@ export default {
         series: opPieFnc.pieSeries("68%", "43%", "50%", data)
       },true);
     },
-    checkGrade(params){
-      let permissions
-      if(params.name==="已录"||params.name==='未录'){
-        permissions = GradeController.getPermissions(JSON.parse(localStorage.token));
+    //获取下一步数据,并更新nextGrade
+    getNextData(next){
+      let {permission,nextGrade} =  GradeController.getPermissions(JSON.parse(localStorage.token),next);
+      this.gradeStatus = nextGrade;
+      if(permission){
+        return permission.default;
       }else {
-        permissions = GradeController.getPermissions(JSON.parse(localStorage.token),this.gradeStatus);
+        return null;
       }
-      console.log(permissions);
-      if(permissions.grade==4){
+    },
+    //饼图下一级跳转控制
+    nextGrade(params){
+      if(this.gradeStatus==null){
         this.$router.push({
           path: "/whole/dormitoryInfo/3331"
         });
+        return;
       }
-      if(permissions.value!==null){
-        this.gradeStatus = permissions.grade;
-        this.inputPieCharts(permissions.value.default)
+      //如果nextGrade 为null 就不需要请求
+      let nextData = this.getNextData(this.gradeStatus);
+      if(nextData==null){
+        this.$router.push({
+          path: "/whole/dormitoryInfo/3331"
+        });
+        return;
       }
-
+      console.log(params)
+      console.log(nextData);
+      this.initPieCharts(nextData)
     }
   },
   watch: {

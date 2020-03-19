@@ -24,9 +24,18 @@ import {
   DropdownMenu,
   DropdownItem,
   MenuItemGroup,
+  Card,
   Notification,
+  Row,
+  Col,
+  Dialog,
+  Input
 } from 'element-ui';
-
+Vue.use(Input);
+Vue.use(Dialog);
+Vue.use(Card);
+Vue.use(Row);
+Vue.use(Col);
 Vue.use(Menu);
 Vue.use(Icon);
 Vue.use(Alert);

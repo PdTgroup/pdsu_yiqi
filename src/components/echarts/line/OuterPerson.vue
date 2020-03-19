@@ -31,7 +31,7 @@ export default {
       role: null,
       myChart: {},
       clientHeight: "100%",
-      outerData: [10, 20, 11, 15, 17, 19, 51],
+      outerData: [100, 20, 11, 15, 17, 19, 51],
       enterData: [22, 70, 111, 571, 440, 360, 10],
       dates: ["3-1", "3-2", "3-3", "3-4", "3-5", "3-6", "3-7"],
       allIndexs: [

@@ -5,7 +5,7 @@
       ><span class="chart-title">{{dormitoryNum}}宿舍信息详情：</span>
     </div>
     <el-table
-      :data="studentInfo"
+      :data="dormitoryInfo"
       border
       style="width: 100%"
       class="student-info"
@@ -31,7 +31,7 @@ export default {
     return {
       clientHeight: "100%",
       dormitoryNum: null,
-      studentInfo: [
+      dormitoryInfo: [
         {
           id: 171210111,
           name: "王小虎",

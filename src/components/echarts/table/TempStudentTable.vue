@@ -14,11 +14,16 @@
     >
       <el-table-column prop="id" label="学号" width="140"> </el-table-column>
       <el-table-column prop="name" label="姓名" width="120"> </el-table-column>
+      <el-table-column prop="sex" label="性别" width="120"> </el-table-column>
       <el-table-column prop="temperature" label="体温/℃" show-overflow-tooltip>
+      </el-table-column>
+      <el-table-column prop="emergencyName" label="紧急联系人姓名" show-overflow-tooltip>
+      </el-table-column>
+      <el-table-column prop="emergencyPhone" label="紧急联系人手机号" show-overflow-tooltip>
       </el-table-column>
       <el-table-column prop="address" label="住址" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column prop="classNo" label="班级"  show-overflow-tooltip >
+      <el-table-column prop="className" label="班级"  show-overflow-tooltip >
       </el-table-column>
       <el-table-column prop="dormitoryNum" label="宿舍号"   show-overflow-tooltip>
       </el-table-column>
@@ -42,8 +47,11 @@ export default {
           id: 171210111,
           temperature: "38.5",
           name: "王小虎",
+          sex:"男",
+          emergencyName:"xxx",
+          emergencyPhone:1524599999,
           address: "上海市普陀区金沙江路 1518 弄",
-          classNo: "17学前一班",
+          className: "17学前一班",
           dormitoryNum: 3331,
           outDoor: "否",
           tel: 13155443325
@@ -68,14 +76,14 @@ export default {
     },
     getStudentInfo(row, column) {
       if (column.property == "id") {
-        this.$router.push({
-          path: "/whole/studentTempLine/" + row.name + "/" + this.role
-        });
+        // this.$router.push({
+        //   path: "/whole/studentTempLine/" + row.name + "/" + this.role
+        // });
       } else if (column.property == "dormitoryNum") {
         this.$router.push({
           path: "/whole/dormitoryInfo/" + row[column.property]
         });
-      } else if (column.property == "classNo") {
+      } else if (column.property == "className") {
         this.$router.push({
           path: "/whole/classStuInfo/" + row[column.property]
         });
@@ -83,7 +91,7 @@ export default {
     },
     // eslint-disable-next-line no-unused-vars
     addClass({row,column,rowIndex,columnIndex}){
-      if(columnIndex === 0||columnIndex === 4||columnIndex === 5){
+      if(columnIndex === 8||columnIndex === 7){
         return 'click_enter'
       }
     }

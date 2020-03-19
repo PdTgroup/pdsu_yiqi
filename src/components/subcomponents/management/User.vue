@@ -19,10 +19,10 @@
             <el-table :data="files" style="width: 100%;" border>
                 <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column prop="id" label="id" width="120"></el-table-column>
-                <el-table-column prop="num" label="学号" width="120"></el-table-column>
+                <el-table-column prop="num" label="学号 / 工号" width="120"></el-table-column>
                 <el-table-column prop="userName" label="用户名" width="120"></el-table-column>
                 <el-table-column prop="role" label="角色" width="120"></el-table-column>
-                <el-table-column prop="employer" label="工作单位" show-overflow-tooltip></el-table-column>
+                <el-table-column prop="employer" label="工作单位 / 班级" show-overflow-tooltip></el-table-column>
                 <el-table-column prop="phone" label="联系方式" show-overflow-tooltip></el-table-column>
                 <el-table-column label="操作" width="120">
                     <template slot-scope="rowNode">
@@ -122,10 +122,10 @@
     </div>
 </template>
 <script>
-    import user from "../../../json/user";
-    import userList from "../../../json/userList";
-    import permissions from "../../../json/permissions";
-    import roleList from "../../../json/roleList";
+    import user from "../../../json/user/user";
+    import userList from "../../../json/user/userList";
+    import permissions from "../../../json/user/permissions";
+    import roleList from "../../../json/user/roleList";
     export default {
         name: "port",
         data() {
